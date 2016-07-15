@@ -27,8 +27,7 @@ var watchify = require('watchify');
 var buffer = require('vinyl-buffer');
 var source = require('vinyl-source-stream');
 var mkdirp = require('mkdirp');
-
-var ngHtml2Js = require('browserify-ng-html2js');
+ 
 
 var PATHS = {
     dest: './dist/',

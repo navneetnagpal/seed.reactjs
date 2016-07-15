@@ -12,8 +12,7 @@ var baseFiles = [
 ];
 var rootSpecs = ['test/spec/*spec.js'];
 var coreSpecs = ['test/spec/core/**/*spec.js'];
-var allSpecs = ['test/spec/components/**/*spec.js'];
-var ngHtml2Js = require('browserify-ng-html2js');
+var allSpecs = ['test/spec/components/**/*spec.js']; 
 
 // Karma configuration
 // Generated on Mon Sep 29 2014 14:30:03 GMT+0530 (India Standard Time)
