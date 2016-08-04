@@ -5,9 +5,7 @@ var coverOptions = {
 };
 
 var baseFiles = [
-    'node_modules/jquery/dist/jquery.js',
-    'node_modules/angular/angular.js',
-    'node_modules/angular-mocks/angular-mocks.js',
+     
     'test/fixtures/**/*.js'
 ];
 var rootSpecs = ['test/spec/*spec.js'];
@@ -44,8 +42,7 @@ module.exports = function(config) {
         // list of files / patterns to load in the browser
         files: baseFiles.concat(
             rootSpecs,
-            coreSpecs,
-            commonSpecs,
+            coreSpecs, 
             allSpecs),
 
 
@@ -114,16 +111,10 @@ function createBrowserifyConfig(config) {
     var config = config || {};
     return {
         debug: true,
-        extensions: ['.js'],
+        extensions: ['.jsx'],
         transform: [
-            ['browserify-ng-html2js', {
-                module: 'templates', // optional module name
-                extension: 'ngt', // optionally specify what file types to look for
-                baseDir: 'src/app', // optionally specify base directory for filename
-                stripPathBefore: '/templates', // optionally specify the part of the path that should be the starting point
-                prefix: '', // optionally specify a prefix to be added to the filename,
-                requireAngular: false // (default: false) optionally include `var angular = require('angular');` 
-                // Supported in Angular 1.3.14 and above if you bundle angular with browserify
+            ['babelify', {
+                presets: ['es2015', 'react']
             }],
             ['browserify-istanbul', config.coverOptions || coverOptions]
         ],

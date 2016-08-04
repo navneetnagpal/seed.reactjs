@@ -1,15 +1,19 @@
 import React, { Component } from 'react'
-import HelloWorld  from '../components/helloworld.jsx'
-function hello(){
-    this.props.phrase="hello";
-}
+import Footer from '../components/Footer.jsx'
+import AddTodo from '../containers/AddTodo.jsx'
+import VisibleTodoList from '../containers/VisibleTodoList.jsx'
+
+
 export default class App extends Component {
   render() {
     return (
       <div>
         <h2>React Sample</h2>
         <hr/>
-        <HelloWorld onChange={hello}></HelloWorld>
+
+         <AddTodo />
+        <VisibleTodoList />
+        <Footer />
       </div>
     )
   }

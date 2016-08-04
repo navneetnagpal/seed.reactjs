@@ -6,12 +6,11 @@ import {getAllTodos} from './actions/index.jsx'
 import reducer from './reducers/index.jsx'
 import App from './containers/App.jsx'
  
+ 
+import todoApp from './reducers/index.jsx'
 
-const store = createStore(
-  reducer
-)
+let store = createStore(todoApp)
 
-store.dispatch(getAllTodos())
 
 render(
   <Provider store={store}>

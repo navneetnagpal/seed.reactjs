@@ -10,19 +10,9 @@
     "start": "nodemon app.js --watch api/**/*{js,json} --watch views/**/*.{hbs} --watch routes.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/navneetnagpal/seed.react.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/navneetnagpal/seed.react/issues"
-  },
-  "homepage": "https://github.com/navneetnagpal/seed.react#readme",
    
   "browser": {
-    "APP": "./src/app/app.js"
+    "APP": "./src/app/app.jsx"
   },
   "dependencies": {
     "bootstrap": "^3.3.6",
