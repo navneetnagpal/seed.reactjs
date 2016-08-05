@@ -1,17 +1,13 @@
 var path = require('path');
 var coverOptions = {
-    ignore: ['**/*spec.js', '**/*.ngt'],
+    ignore: ['**/*spec.jsx'],
     defaultIgnore: true
 };
 
 var baseFiles = [
-     
-    'test/fixtures/**/*.js'
+      
 ];
-var rootSpecs = ['test/spec/*spec.js'];
-var coreSpecs = ['test/spec/core/**/*spec.js'];
-var allSpecs = ['test/spec/components/**/*spec.js']; 
-
+var rootSpecs = ['test/spec/**/*spec.jsx'];
 // Karma configuration
 // Generated on Mon Sep 29 2014 14:30:03 GMT+0530 (India Standard Time)
 
@@ -24,8 +20,8 @@ module.exports = function(config) {
     config.set({
         requiredFiles: baseFiles,
         preprocessors: {
-            'src/app/**/*.js': ['coverage', 'browserify'],
-            'test/spec/**/*spec.js': ['browserify']
+            'src/app/**/*.jsx': ['browserify'],
+            'test/spec/**/*spec.jsx': ['browserify']
         },
 
         browserify: createBrowserifyConfig({
@@ -41,9 +37,7 @@ module.exports = function(config) {
 
         // list of files / patterns to load in the browser
         files: baseFiles.concat(
-            rootSpecs,
-            coreSpecs, 
-            allSpecs),
+            rootSpecs),
 
 
         // list of files to exclude
@@ -115,8 +109,8 @@ function createBrowserifyConfig(config) {
         transform: [
             ['babelify', {
                 presets: ['es2015', 'react']
-            }],
-            ['browserify-istanbul', config.coverOptions || coverOptions]
+            }]//,
+            // ['browserify-istanbul', config.coverOptions || coverOptions]
         ],
         configure: function(bundle) {
             /*  bundle.on('prebundle', function() {
