@@ -7,9 +7,9 @@ import reducer from './reducers/index.jsx'
 import App from './containers/App.jsx'
  
  
-import todoApp from './reducers/index.jsx'
+import Application from './reducers/index.jsx'
 
-let store = createStore(todoApp)
+let store = createStore(Application)
 
 
 render(
@@ -18,3 +18,4 @@ render(
   </Provider>,
   document.getElementById('root')
 )
+ 

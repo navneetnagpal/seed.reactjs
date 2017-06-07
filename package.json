@@ -17,6 +17,7 @@
     "bootstrap": "^3.3.6",
     "bootstrap-sass": "^3.3.6",
     "hbs": "^4.0.0",
+    "prop-types": "^15.5.10",
     "react": "^15.3.0",
     "react-dom": "^15.0.2",
     "react-redux": "^4.4.5",
