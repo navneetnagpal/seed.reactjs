@@ -8,6 +8,8 @@ export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER'
 
 
 export const ADD_ENTRY = 'ADD_ENTRY'
+export const UPDATE_ENTRY = 'UPDATE_ENTRY'
+
 export const ADD_CATEGORY = 'ADD_CATEGORY'
 
 /*
@@ -24,8 +26,16 @@ export const VisibilityFilters = {
  * action creators
  */
 
- export function addEntry(income,expense){
- 	return { type: ADD_ENTRY, income, expense}
+ export function addEntry(){
+ 	return { type: ADD_ENTRY}
+ }
+export function updateEntry(field,value, id){
+	let obj = { type: UPDATE_ENTRY, id }
+	obj[field]=value;
+ 	return obj
+ }
+ export function addCategory(text){
+ 	return { type: ADD_CATEGORY, text}
  }
 
 export function addTodo(text, id) {

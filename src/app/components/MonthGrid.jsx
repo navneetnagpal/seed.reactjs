@@ -1,16 +1,19 @@
 import React from 'react'
 import MonthRow from './MonthRow.jsx'
+import TextWithAddBtn from './TextWithAddBtn.jsx'
 import PropTypes from 'prop-types'
 
-const MonthGrid = ({ entries, categories, onAddEntryClick }) => (
-  <div>
-  <table>
+const MonthGrid = ({ entries, categories, onAddEntryClick, onPlusClick, onCellUpdate }) => (
+    <div>
+  Category:<TextWithAddBtn onPlusClick={onPlusClick} />
+  <table className='table table-striped'>
   <thead>
   <tr>
-  {categories.map(category=>
+  	{categories.map(category=>
 
-  	<th key={category.field}> {category.text} </th>
+  		<th key={category.field}> {category.text} </th>
   	)}
+   <th> Total </th>
   </tr>
   </thead>
   <tbody>
@@ -19,6 +22,7 @@ const MonthGrid = ({ entries, categories, onAddEntryClick }) => (
         key={entry.id}
         categories={categories}
         {...entry}
+        onUpdate={onCellUpdate}
       />
     )}
   </tbody>
@@ -28,12 +32,12 @@ const MonthGrid = ({ entries, categories, onAddEntryClick }) => (
 )
 
 MonthGrid.propTypes = {
-  entries: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    income: PropTypes.number.isRequired,
-    expense: PropTypes.number.isRequired
-  }).isRequired).isRequired,
-  onAddEntryClick: PropTypes.func.isRequired
+    entries: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.number.isRequired
+    }).isRequired).isRequired,
+    onAddEntryClick: PropTypes.func.isRequired,
+    onPlusClick: PropTypes.func.isRequired,
+    onCellUpdate: PropTypes.func.isRequired
 }
 
 export default MonthGrid
