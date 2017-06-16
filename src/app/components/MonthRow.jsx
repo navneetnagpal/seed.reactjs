@@ -12,7 +12,7 @@ const MonthRow = (state, onUpdate) => (
         	id={state.id}
         	field={category.field}
         	value={state[category.field]}
-        	onUpdate={state.onUpdate}
+        	onUpdate={(a,b,c)=>state.onUpdate(a,b,c)}
         	/>    
         )}
 

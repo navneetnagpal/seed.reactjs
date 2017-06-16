@@ -1,10 +1,6 @@
 @import "bootstrap/bootstrap";
 @import "base/index"; 
 
-.movies-list__cover {
-	max-height:101px;
-}
-.movies-list__item {
-	min-height:101px;
-	padding:20px;
-}
+
+@import "components/text-with-add-btn";
+@import "components/monthly-grid";

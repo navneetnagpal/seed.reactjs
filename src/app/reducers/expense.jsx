@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 import { ADD_ENTRY, UPDATE_ENTRY, ADD_CATEGORY } from '../actions/index.jsx'
-var e_count = 1;
+var e_count = 0;
 var defaultCategories = [{
     field: 'income',
     text: 'Income',
@@ -13,12 +13,12 @@ var defaultCategories = [{
 
 
 
-export function entries(state = [{ id: 0 , total:0}], action) {
+export function entries(state = [], action) {
     switch (action.type) {
         case ADD_ENTRY:
             return [
                 ...state, {
-                    id: e_count++,
+                    id: parseInt(Math.random()*100000000),
                     total: 0
                 }
             ]
@@ -26,12 +26,25 @@ export function entries(state = [{ id: 0 , total:0}], action) {
         case UPDATE_ENTRY:
             return state.map((entry, index) => {
                 if (entry.id === action.id) {
-                    let obj = Object.assign({}, entry, {
-                        income: action.income || entry.income,
-                        expense: action.expense|| entry.expense,
-                        total: ((action.income || entry.income) || 0) - (( action.expense|| entry.expense) || 0)
+                    let obj
+                    Object.keys(action).forEach(function(key) {
+                        if (['action', 'id', 'type'].indexOf(key) === -1) {
+                            var tempObj = {};
+                            tempObj[key] = action[key];
+                            obj = Object.assign({}, entry, tempObj)
+                        }
                     })
-                     
+                    let total = 0
+                    Object.keys(obj).forEach(function(key) {
+                        if (['action', 'id', 'type', 'total'].indexOf(key) === -1) {
+                            if (key === 'income') {
+                                total += obj[key];
+                            } else {
+                                total -= obj[key];
+                            }
+                        }
+                    })
+                    obj.total = total;
                     return obj
                 }
                 return entry

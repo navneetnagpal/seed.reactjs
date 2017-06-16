@@ -5,16 +5,19 @@ let TextWithAddBtn = ({ onPlusClick }) => {
     let input
 
     return (
+    	<form className="text-add-btn" onSubmit={(e)=>{
+    		e.preventDefault();
+    		if (input.value){
+				onPlusClick(input.value)
+				input.value=''
+			}
+    	}}>
         <span>
-<input type="text" ref={node => {
+<input type="text" className="text-add-btn__input-box" ref={node => {
 input = node
-}} /> <button type='text' onClick={()=>{
-if (input.value){
-onPlusClick(input.value)
-input.value=''
-}
-}} >+</button>
+}} /> <button type='submit' >+</button>
 </span>
+</form>
     )
 }
 
